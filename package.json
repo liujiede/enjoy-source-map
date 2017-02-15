@@ -1,0 +1,20 @@
+{
+  "name": "enjoy-source-map",
+  "version": "1.0.0",
+  "description": "Generate source-map for templates and merge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "source-map offset",
+    "source-map replace",
+    "source-map join"
+  ],
+  "author": "jie.liu5@corp.elong.com",
+  "license": "ISC",
+  "dependencies": {
+    "combine-source-map": "^0.7.2",
+    "convert-source-map": "^1.4.0"
+  }
+}

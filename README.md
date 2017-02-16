@@ -1,125 +1,62 @@
-# enjoy-source-map [![build status](https://secure.travis-ci.org/thlorenz/enjoy-source-map.png)](http://travis-ci.org/thlorenz/enjoy-source-map)
+# enjoy-source-map [![build status](https://secure.travis-ci.org/liujiede/enjoy-source-map.png)](https://travis-ci.org/liujiede/enjoy-source-map.svg?branch=master)
 
 [![NPM](https://nodei.co/npm/enjoy-source-map.png?downloads=true&stars=true)](https://nodei.co/npm/enjoy-source-map/)
 
-Converts a source-map from/to  different formats and allows adding/changing properties.
+含有内联sourcemap的文件合并、模板替换后保持原有对应关系.
 
 ```js
-var convert = require('enjoy-source-map');
+var combline = require('enjoy-source-map');
 
-var json = convert
-  .fromComment('//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYnVpbGQvZm9vLm1pbi5qcyIsInNvdXJjZXMiOlsic3JjL2Zvby5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsInNvdXJjZVJvb3QiOiIvIn0=')
-  .toJSON();
+//读取源代码
+var content = fs.readFileSync(path.resolve(__dirname, "index.js"), {
+    encoding: "utf8"
+});
 
-var modified = convert
-  .fromComment('//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYnVpbGQvZm9vLm1pbi5qcyIsInNvdXJjZXMiOlsic3JjL2Zvby5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsInNvdXJjZVJvb3QiOiIvIn0=')
-  .setProperty('sources', [ 'SRC/FOO.JS' ])
-  .toJSON();
+//读取模板
+var innerModTpl = fs.readFileSync(path.resolve(__dirname, "inner-mod.tpl"), {
+    encoding: "utf8"
+});
 
-console.log(json);
-console.log(modified);
+//babel转换源代码（需配置sourceMap:'line'）
+var source =  babel.transform(content, {...}).code;
+
+content = combline.overWriteTlp(innerModTpl,{
+    content:source
+});
+
+console.log(content);
 ```
 
-```json
-{"version":3,"file":"build/foo.min.js","sources":["src/foo.js"],"names":[],"mappings":"AAAA","sourceRoot":"/"}
-{"version":3,"file":"build/foo.min.js","sources":["SRC/FOO.JS"],"names":[],"mappings":"AAAA","sourceRoot":"/"}
+```js
+// index.js
+function(__inner_require__, exports, module) {
+    'use strict';
+
+    var _babelPolyfill = require("babel-polyfill@6/lib/index.js");
+
+    var _babelPolyfill2 = babelHelpers.interopRequireDefault(_babelPolyfill);
+
+    var _enjoyWebSupportElong = require("enjoy-web-support-elong@0.2/index.js");
+
+    var _enjoyWebSupportElong2 = babelHelpers.interopRequireDefault(_enjoyWebSupportElong);
+
+    var _main = __inner_require__(1 /*main.js*/ );
+
+    var _main2 = babelHelpers.interopRequireDefault(_main);
+
+    _enjoyWebSupportElong2.default.React.render(_enjoyWebSupportElong2.default.React.createElement(_main2.default), document.getElementsByTagName("div")[0]);
+
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qaWUvRG9jdW1lbnRzL2Vsb25nL2Vuam95VGVzdC93ZWIvaDUvX2J1aWxkL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0NBQUE7O0NBRUE7Ozs7Q0FDQTs7OztDQUNBOzs7O0NBRUEsK0JBQUEsQUFBTSxNQUFOLEFBQVksT0FBTywrQkFBQSxBQUFNLE1BQU4sQUFBWSxxQkFBL0IsVUFBb0QsU0FBQSxBQUFTLHFCQUFULEFBQThCLE9BQWxGLEFBQW9ELEFBQXFDIiwiZmlsZSI6ImJ1bmRsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIHN0cmljdCc7XG5cbmltcG9ydCBCYWJlbFBvbHlmaWxsIGZyb20gXCJiYWJlbC1wb2x5ZmlsbFwiO1xuaW1wb3J0IEVuam95IGZyb20gXCJlbmpveS13ZWItc3VwcG9ydC1lbG9uZ1wiO1xuaW1wb3J0IE1haW4gZnJvbSBcIi4vbWFpblwiO1xuXG5FbmpveS5SZWFjdC5yZW5kZXIoRW5qb3kuUmVhY3QuY3JlYXRlRWxlbWVudChNYWluKSwgZG9jdW1lbnQuZ2V0RWxlbWVudHNCeVRhZ05hbWUoXCJkaXZcIilbMF0pO1xuIl19
+
 ```
 
 ## API
-
-### fromObject(obj)
-
-Returns source map converter from given object.
-
-### fromJSON(json)
-
-Returns source map converter from given json string.
-
-### fromBase64(base64)
-
-Returns source map converter from given base64 encoded json string.
-
-### fromComment(comment)
-
-Returns source map converter from given base64 encoded json string prefixed with `//# sourceMappingURL=...`.
-
-### fromMapFileComment(comment, mapFileDir)
-
-Returns source map converter from given `filename` by parsing `//# sourceMappingURL=filename`.
-
-`filename` must point to a file that is found inside the `mapFileDir`. Most tools store this file right next to the
-generated file, i.e. the one containing the source map.
-
-### fromSource(source)
-
-Finds last sourcemap comment in file and returns source map converter or returns null if no source map comment was found.
-
-### fromMapFileSource(source, mapFileDir)
-
-Finds last sourcemap comment in file and returns source map converter or returns null if no source map comment was
-found.
-
-The sourcemap will be read from the map file found by parsing `# sourceMappingURL=file` comment. For more info see
-fromMapFileComment.
-
-### toObject()
-
-Returns a copy of the underlying source map.
-
-### toJSON([space])
-
-Converts source map to json string. If `space` is given (optional), this will be passed to
-[JSON.stringify](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify) when the
-JSON string is generated.
-
-### toBase64()
-
-Converts source map to base64 encoded json string.
-
-### toComment([options])
-
-Converts source map to an inline comment that can be appended to the source-file.
-
-By default, the comment is formatted like: `//# sourceMappingURL=...`, which you would
-normally see in a JS source file.
-
-When `options.multiline == true`, the comment is formatted like: `/*# sourceMappingURL=... */`, which you would find in a CSS source file.
-
-### addProperty(key, value)
-
-Adds given property to the source map. Throws an error if property already exists.
-
-### setProperty(key, value)
-
-Sets given property to the source map. If property doesn't exist it is added, otherwise its value is updated.
-
-### getProperty(key)
-
-Gets given property of the source map.
-
-### removeComments(src)
-
-Returns `src` with all source map comments removed
-
-### removeMapFileComments(src)
-
-Returns `src` with all source map comments pointing to map files removed.
-
-### commentRegex
-
-Returns the regex used to find source map comments.
-
-### mapFileCommentRegex
-
-Returns the regex used to find source map comments pointing to map files.
-
-### generateMapFileComment(file, [options])
-
-Returns a comment that links to an external source map via `file`.
-
-By default, the comment is formatted like: `//# sourceMappingURL=...`, which you would normally see in a JS source file.
-
-When `options.multiline == true`, the comment is formatted like: `/*# sourceMappingURL=... */`, which you would find in a CSS source file.
+### overWriteTlp(tpl, data)
+模板替换
+### overWriteJoin(codes,jo = ',\n')
+合并
+### overWriteReplace(target,regexp|substr, newSubstr|function)
+replace替换
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/thlorenz/enjoy-source-map/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

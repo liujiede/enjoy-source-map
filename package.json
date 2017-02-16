@@ -20,7 +20,8 @@
   "license": "ISC",
   "dependencies": {
     "combine-source-map": "^0.7.2",
-    "convert-source-map": "^1.4.0"
+    "convert-source-map": "^1.4.0",
+    "vlq": "^0.2.1"
   },
   "bugs": {
     "url": "https://github.com/liujiede/enjoy-source-map/issues"

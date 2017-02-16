@@ -17,7 +17,7 @@ var innerModTpl = fs.readFileSync(path.resolve(__dirname, "inner-mod.tpl"), {
     encoding: "utf8"
 });
 
-//babel转换源代码（需配置sourceMap:'line'）
+//babel转换源代码（需配置sourceMaps:'line'）
 var source =  babel.transform(content, {...}).code;
 
 content = combline.overWriteTlp(innerModTpl,{

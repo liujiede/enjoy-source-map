@@ -52,11 +52,17 @@ function(__inner_require__, exports, module) {
 ```
 
 ## API
+
 ### overWriteTlp(tpl, data)
+
 模板替换
+
 ### overWriteJoin(codes,jo = ',\n')
+
 数组合并
+
 ### overWriteReplace(target,regexp|substr, newSubstr|function)
+
 replace替换
 
 

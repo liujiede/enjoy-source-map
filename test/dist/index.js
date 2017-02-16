@@ -6,338 +6,338 @@
 		// 
 		(function(__inner_require__, exports, module){
 			"use strict";
-			
-			Object.defineProperty(exports, "__esModule", {
-				value: true
-			});
-			
-			var _enjoyRnSupportElong = require("enjoy-rn-support-elong");
-			
-			var _enjoyRnSupportElong2 = _interopRequireDefault(_enjoyRnSupportElong);
-			
-			function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-			
-			var StyleSheet = _enjoyRnSupportElong2.default.StyleSheet;
-			exports.default = new StyleSheet({
-				rules: {
-					"0": {
-						justifyContent: "center",
-						alignItems: "center",
-						backgroundColor: "#fcfcfc"
-					},
-					"1": {
-						backgroundColor: "#f6f6f6",
-						borderBottomWidth: "1px",
-						borderStyle: "solid",
-						borderBottomColor: "#eee"
-					},
-					"2": {
-						color: "#666"
-					},
-					"3": {
-						color: "#38f"
-					},
-					"4": {
-						color: "#999"
-					},
-					"5": {
-						fontSize: "60px",
-						fontWeight: "100",
-						color: "#aaa",
-						textAlign: "center"
-					}
-				},
-				index: {
-					".rn-body": [{
-						key: "0"
-					}],
-					".navbar": [{
-						key: "1"
-					}],
-					".user": [{
-						key: "2"
-					}],
-					".rn-a": [{
-						selector: ".user .rn-a",
-						key: "3"
-					}],
-					".logining": [{
-						key: "4"
-					}],
-					".rn-p": [{
-						key: "5"
-					}]
-				}
-			});
+            
+            Object.defineProperty(exports, "__esModule", {
+            	value: true
+            });
+            
+            var _enjoyRnSupportElong = require("enjoy-rn-support-elong");
+            
+            var _enjoyRnSupportElong2 = _interopRequireDefault(_enjoyRnSupportElong);
+            
+            function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+            
+            var StyleSheet = _enjoyRnSupportElong2.default.StyleSheet;
+            exports.default = new StyleSheet({
+            	rules: {
+            		"0": {
+            			justifyContent: "center",
+            			alignItems: "center",
+            			backgroundColor: "#fcfcfc"
+            		},
+            		"1": {
+            			backgroundColor: "#f6f6f6",
+            			borderBottomWidth: "1px",
+            			borderStyle: "solid",
+            			borderBottomColor: "#eee"
+            		},
+            		"2": {
+            			color: "#666"
+            		},
+            		"3": {
+            			color: "#38f"
+            		},
+            		"4": {
+            			color: "#999"
+            		},
+            		"5": {
+            			fontSize: "60px",
+            			fontWeight: "100",
+            			color: "#aaa",
+            			textAlign: "center"
+            		}
+            	},
+            	index: {
+            		".rn-body": [{
+            			key: "0"
+            		}],
+            		".navbar": [{
+            			key: "1"
+            		}],
+            		".user": [{
+            			key: "2"
+            		}],
+            		".rn-a": [{
+            			selector: ".user .rn-a",
+            			key: "3"
+            		}],
+            		".logining": [{
+            			key: "4"
+            		}],
+            		".rn-p": [{
+            			key: "5"
+            		}]
+            	}
+            });
 
 		}({},{},{})),
 		// 
 		(function(__inner_require__, exports, module){
 			"use strict";
-			
-			Object.defineProperty(exports, "__esModule", {
-				value: true
-			});
-			exports.default = View;
-			
-			var _enjoyRnSupportElong = require("enjoy-rn-support-elong");
-			
-			var _enjoyRnSupportElong2 = _interopRequireDefault(_enjoyRnSupportElong);
-			
-			function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-			
-			var React = _enjoyRnSupportElong2.default.React;
-			var Box = _enjoyRnSupportElong2.default.Box,
-			    A = _enjoyRnSupportElong2.default.A,
-			    Body = _enjoyRnSupportElong2.default.Body,
-			    Util = _enjoyRnSupportElong2.default.Util,
-			    document = _enjoyRnSupportElong2.default.document;
-			
-			
-			var __dom__ = React.createElement;
-			var __class__ = Util.arrayClass;
-			var __util__ = Util.pageUtil(__project + "/views/home/index");
-			
-			var __htmlIndex__ = Util.getHtmlIndex();
-			var __keyIndex__ = 0;
-			function __getKey__() {
-				return __htmlIndex__ + __keyIndex__++;
-			}
-			
-			__util__.header({});
-			
-			function View() {
-				var __view__ = {};
-				var a, b, c;
-				__view__.header = {
-					render: function () {
-						this.page.navbar.view({
-							url: this.page.url,
-							render: function (__nav_util__) {
-								return __dom__(Box, {
-									_styles: this._styles,
-									css: [".rn-head", ".navbar"],
-									_id: __getKey__()
-								}, __dom__(Box, {
-									css: [".rn-title", ".navbar-title"],
-									_id: __getKey__()
-								}, "\u9996\u9875"), __dom__(Box, {
-									css: [".rn-left", ".navbar-left"],
-									_id: __getKey__()
-								}, __dom__(A, { onClick: this.openCalendar.bind(this), css: [".rn-a"],
-									_id: __getKey__()
-								}, this.state.date || "日历")), __dom__(Box, {
-									css: [".rn-right", ".navbar-right"],
-									_id: __getKey__()
-								}, this.state.user ? __dom__(Box, {
-									css: [".rn-span", ".user"],
-									_id: __getKey__()
-								}, "\u4F60\u597D", __dom__(A, { href: "/user-info?userId=" + this.state.user.id, css: [".rn-a"],
-									_id: __getKey__(),
-									_util: __util__,
-									_navigator: this.page
-								}, this.state.user.name)) : __dom__(Box, {
-									css: [".rn-span", ".logining"],
-									_id: __getKey__()
-								}, "\u767B\u9646\u4E2D...")));
-							}.bind(this)
-						});
-						a = this._styles;
-						b = this.state.date;
-						c = this.state.user ? __dom__(Box, {
-							css: [".rn-span", ".user"],
-							_id: __getKey__()
-						}, "\u4F60\u597D", __dom__(A, { href: "/user-info?userId=" + this.state.user.id, css: [".rn-a"],
-							_id: __getKey__(),
-							_util: __util__,
-							_navigator: this.page
-						}, this.state.user.name)) : __dom__(Box, {
-							css: [".rn-span", ".logining"],
-							_id: __getKey__()
-						}, "\u767B\u9646\u4E2D...");
-					}.bind(this),
-					check: function () {
-						return (this.state.user ? __dom__(Box, {
-							css: [".rn-span", ".user"],
-							_id: __getKey__()
-						}, "\u4F60\u597D", __dom__(A, { href: "/user-info?userId=" + this.state.user.id, css: [".rn-a"],
-							_id: __getKey__(),
-							_util: __util__,
-							_navigator: this.page
-						}, this.state.user.name)) : __dom__(Box, {
-							css: [".rn-span", ".logining"],
-							_id: __getKey__()
-						}, "\u767B\u9646\u4E2D...")) !== c || this.state.date !== b || this._styles !== a;
-					}.bind(this)
-				};
-			
-				__view__.render = function (components) {
-					return __dom__(Body, {
-						_component_id: this.props._id,
-						_styles: this._styles,
-						css: [".rn-body"],
-						_id: __getKey__()
-					}, __dom__(Box, {
-						css: [".rn-p"],
-						_id: __getKey__()
-					}, "Hello Enjoy!"), components);
-				}.bind(this);
-			
-				return __view__;
-			}
+            
+            Object.defineProperty(exports, "__esModule", {
+            	value: true
+            });
+            exports.default = View;
+            
+            var _enjoyRnSupportElong = require("enjoy-rn-support-elong");
+            
+            var _enjoyRnSupportElong2 = _interopRequireDefault(_enjoyRnSupportElong);
+            
+            function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+            
+            var React = _enjoyRnSupportElong2.default.React;
+            var Box = _enjoyRnSupportElong2.default.Box,
+                A = _enjoyRnSupportElong2.default.A,
+                Body = _enjoyRnSupportElong2.default.Body,
+                Util = _enjoyRnSupportElong2.default.Util,
+                document = _enjoyRnSupportElong2.default.document;
+            
+            
+            var __dom__ = React.createElement;
+            var __class__ = Util.arrayClass;
+            var __util__ = Util.pageUtil(__project + "/views/home/index");
+            
+            var __htmlIndex__ = Util.getHtmlIndex();
+            var __keyIndex__ = 0;
+            function __getKey__() {
+            	return __htmlIndex__ + __keyIndex__++;
+            }
+            
+            __util__.header({});
+            
+            function View() {
+            	var __view__ = {};
+            	var a, b, c;
+            	__view__.header = {
+            		render: function () {
+            			this.page.navbar.view({
+            				url: this.page.url,
+            				render: function (__nav_util__) {
+            					return __dom__(Box, {
+            						_styles: this._styles,
+            						css: [".rn-head", ".navbar"],
+            						_id: __getKey__()
+            					}, __dom__(Box, {
+            						css: [".rn-title", ".navbar-title"],
+            						_id: __getKey__()
+            					}, "\u9996\u9875"), __dom__(Box, {
+            						css: [".rn-left", ".navbar-left"],
+            						_id: __getKey__()
+            					}, __dom__(A, { onClick: this.openCalendar.bind(this), css: [".rn-a"],
+            						_id: __getKey__()
+            					}, this.state.date || "日历")), __dom__(Box, {
+            						css: [".rn-right", ".navbar-right"],
+            						_id: __getKey__()
+            					}, this.state.user ? __dom__(Box, {
+            						css: [".rn-span", ".user"],
+            						_id: __getKey__()
+            					}, "\u4F60\u597D", __dom__(A, { href: "/user-info?userId=" + this.state.user.id, css: [".rn-a"],
+            						_id: __getKey__(),
+            						_util: __util__,
+            						_navigator: this.page
+            					}, this.state.user.name)) : __dom__(Box, {
+            						css: [".rn-span", ".logining"],
+            						_id: __getKey__()
+            					}, "\u767B\u9646\u4E2D...")));
+            				}.bind(this)
+            			});
+            			a = this._styles;
+            			b = this.state.date;
+            			c = this.state.user ? __dom__(Box, {
+            				css: [".rn-span", ".user"],
+            				_id: __getKey__()
+            			}, "\u4F60\u597D", __dom__(A, { href: "/user-info?userId=" + this.state.user.id, css: [".rn-a"],
+            				_id: __getKey__(),
+            				_util: __util__,
+            				_navigator: this.page
+            			}, this.state.user.name)) : __dom__(Box, {
+            				css: [".rn-span", ".logining"],
+            				_id: __getKey__()
+            			}, "\u767B\u9646\u4E2D...");
+            		}.bind(this),
+            		check: function () {
+            			return (this.state.user ? __dom__(Box, {
+            				css: [".rn-span", ".user"],
+            				_id: __getKey__()
+            			}, "\u4F60\u597D", __dom__(A, { href: "/user-info?userId=" + this.state.user.id, css: [".rn-a"],
+            				_id: __getKey__(),
+            				_util: __util__,
+            				_navigator: this.page
+            			}, this.state.user.name)) : __dom__(Box, {
+            				css: [".rn-span", ".logining"],
+            				_id: __getKey__()
+            			}, "\u767B\u9646\u4E2D...")) !== c || this.state.date !== b || this._styles !== a;
+            		}.bind(this)
+            	};
+            
+            	__view__.render = function (components) {
+            		return __dom__(Body, {
+            			_component_id: this.props._id,
+            			_styles: this._styles,
+            			css: [".rn-body"],
+            			_id: __getKey__()
+            		}, __dom__(Box, {
+            			css: [".rn-p"],
+            			_id: __getKey__()
+            		}, "Hello Enjoy!"), components);
+            	}.bind(this);
+            
+            	return __view__;
+            }
 
 		}({},{},{})),
 		// 
 		(function(__inner_require__, exports, module){
 			"use strict";
-			
-			Object.defineProperty(exports, "__esModule", {
-				value: true
-			});
-			exports.default = undefined;
-			
-			var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-			
-			var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-			
-			var _class2, _temp;
-			
-			var _enjoyRnSupportElong = require("enjoy-rn-support-elong");
-			
-			var _enjoyRnSupportElong2 = _interopRequireDefault(_enjoyRnSupportElong);
-			
-			var _index = require("../../components/calendar/index");
-			
-			var _index2 = _interopRequireDefault(_index);
-			
-			var _user = require("../../service/user");
-			
-			var _user2 = _interopRequireDefault(_user);
-			
-			function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-			
-			function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-			
-			function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-			
-			function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-			
-			function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-			
-			var React = _enjoyRnSupportElong2.default.React;
-			var Util = _enjoyRnSupportElong2.default.Util,
-			    document = _enjoyRnSupportElong2.default.document;
-			
-			
-			var __dom__ = React.createElement;
-			var __class__ = Util.arrayClass;
-			var __util__ = Util.pageUtil(__project + "/views/home/index");
-			
-			var __htmlIndex__ = Util.getHtmlIndex();
-			var __keyIndex__ = 0;
-			function __getKey__() {
-				return __htmlIndex__ + __keyIndex__++;
-			}
-			
-			var _dec, _class;
-			
-			var Component = _enjoyRnSupportElong2.default.Component,
-			    layers = _enjoyRnSupportElong2.default.layers;
-			
-			
-			var Home = (_dec = layers({
-				calendar: _index2.default
-			}), _dec(_class = (_temp = _class2 = function (_Component) {
-				_inherits(Home, _Component);
-			
-				function Home(props) {
-					_classCallCheck(this, Home);
-			
-					var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
-			
-					_this.state = {
-						user: null,
-						date: ""
-					};
-			
-					if (Home.__start_list__) {
-						Home.__start_list__.forEach(function (item) {
-							item.call(_this);
-						});
-					}
-					return _this;
-				}
-			
-				_createClass(Home, [{
-					key: "componentWillMount",
-					value: function componentWillMount() {
-						_get(Home.prototype.__proto__ || Object.getPrototypeOf(Home.prototype), "componentWillMount", this).call(this);
-			
-						this.loadUserInfo();
-					}
-				}, {
-					key: "componentDidMount",
-					value: function componentDidMount() {
-						var _this2 = this;
-			
-						_get(Home.prototype.__proto__ || Object.getPrototypeOf(Home.prototype), "componentDidMount", this).call(this);
-			
-						this.calendar.onReady(function () {
-							_this2.calendar.component.onSelect(function (date) {
-								_this2.setState({
-									date: date
-								});
-							});
-						});
-					}
-				}, {
-					key: "loadUserInfo",
-					value: function () {
-						var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
-							return regeneratorRuntime.wrap(function _callee$(_context) {
-								while (1) {
-									switch (_context.prev = _context.next) {
-										case 0:
-											_context.t0 = this;
-											_context.next = 3;
-											return _user2.default.UserInfo();
-			
-										case 3:
-											_context.t1 = _context.sent;
-											_context.t2 = {
-												user: _context.t1
-											};
-			
-											_context.t0.setState.call(_context.t0, _context.t2);
-			
-										case 6:
-										case "end":
-											return _context.stop();
-									}
-								}
-							}, _callee, this);
-						}));
-			
-						function loadUserInfo() {
-							return _ref.apply(this, arguments);
-						}
-			
-						return loadUserInfo;
-					}()
-				}, {
-					key: "openCalendar",
-					value: function openCalendar() {
-						this.calendar.show();
-					}
-				}]);
-			
-				return Home;
-			}(Component), _class2.View = require("./index-html").default, _class2.Styles = [require("./index-css").default], _class2.__start_list__ = [function () {
-				this._styles = Home.Styles;
-			}, function () {
-				this.view = Home.View.call(this);
-			}], _temp)) || _class);
-			exports.default = Home;
+            
+            Object.defineProperty(exports, "__esModule", {
+            	value: true
+            });
+            exports.default = undefined;
+            
+            var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+            
+            var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+            
+            var _class2, _temp;
+            
+            var _enjoyRnSupportElong = require("enjoy-rn-support-elong");
+            
+            var _enjoyRnSupportElong2 = _interopRequireDefault(_enjoyRnSupportElong);
+            
+            var _index = require("../../components/calendar/index");
+            
+            var _index2 = _interopRequireDefault(_index);
+            
+            var _user = require("../../service/user");
+            
+            var _user2 = _interopRequireDefault(_user);
+            
+            function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+            
+            function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+            
+            function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+            
+            function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+            
+            function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+            
+            var React = _enjoyRnSupportElong2.default.React;
+            var Util = _enjoyRnSupportElong2.default.Util,
+                document = _enjoyRnSupportElong2.default.document;
+            
+            
+            var __dom__ = React.createElement;
+            var __class__ = Util.arrayClass;
+            var __util__ = Util.pageUtil(__project + "/views/home/index");
+            
+            var __htmlIndex__ = Util.getHtmlIndex();
+            var __keyIndex__ = 0;
+            function __getKey__() {
+            	return __htmlIndex__ + __keyIndex__++;
+            }
+            
+            var _dec, _class;
+            
+            var Component = _enjoyRnSupportElong2.default.Component,
+                layers = _enjoyRnSupportElong2.default.layers;
+            
+            
+            var Home = (_dec = layers({
+            	calendar: _index2.default
+            }), _dec(_class = (_temp = _class2 = function (_Component) {
+            	_inherits(Home, _Component);
+            
+            	function Home(props) {
+            		_classCallCheck(this, Home);
+            
+            		var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+            
+            		_this.state = {
+            			user: null,
+            			date: ""
+            		};
+            
+            		if (Home.__start_list__) {
+            			Home.__start_list__.forEach(function (item) {
+            				item.call(_this);
+            			});
+            		}
+            		return _this;
+            	}
+            
+            	_createClass(Home, [{
+            		key: "componentWillMount",
+            		value: function componentWillMount() {
+            			_get(Home.prototype.__proto__ || Object.getPrototypeOf(Home.prototype), "componentWillMount", this).call(this);
+            
+            			this.loadUserInfo();
+            		}
+            	}, {
+            		key: "componentDidMount",
+            		value: function componentDidMount() {
+            			var _this2 = this;
+            
+            			_get(Home.prototype.__proto__ || Object.getPrototypeOf(Home.prototype), "componentDidMount", this).call(this);
+            
+            			this.calendar.onReady(function () {
+            				_this2.calendar.component.onSelect(function (date) {
+            					_this2.setState({
+            						date: date
+            					});
+            				});
+            			});
+            		}
+            	}, {
+            		key: "loadUserInfo",
+            		value: function () {
+            			var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+            				return regeneratorRuntime.wrap(function _callee$(_context) {
+            					while (1) {
+            						switch (_context.prev = _context.next) {
+            							case 0:
+            								_context.t0 = this;
+            								_context.next = 3;
+            								return _user2.default.UserInfo();
+            
+            							case 3:
+            								_context.t1 = _context.sent;
+            								_context.t2 = {
+            									user: _context.t1
+            								};
+            
+            								_context.t0.setState.call(_context.t0, _context.t2);
+            
+            							case 6:
+            							case "end":
+            								return _context.stop();
+            						}
+            					}
+            				}, _callee, this);
+            			}));
+            
+            			function loadUserInfo() {
+            				return _ref.apply(this, arguments);
+            			}
+            
+            			return loadUserInfo;
+            		}()
+            	}, {
+            		key: "openCalendar",
+            		value: function openCalendar() {
+            			this.calendar.show();
+            		}
+            	}]);
+            
+            	return Home;
+            }(Component), _class2.View = require("./index-html").default, _class2.Styles = [require("./index-css").default], _class2.__start_list__ = [function () {
+            	this._styles = Home.Styles;
+            }, function () {
+            	this.view = Home.View.call(this);
+            }], _temp)) || _class);
+            exports.default = Home;
 
 		}({},{},{}))
 

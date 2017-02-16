@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/enjoy-source-map.png?downloads=true&stars=true)](https://nodei.co/npm/enjoy-source-map/)
 
-含有内联sourcemap的文件合并、模板替换后保持原有对应关系.
+将含有内联sourcemap的文件合并、模板替换，保持原有对应关系.
 
 ```js
 var combline = require('enjoy-source-map');
@@ -55,7 +55,7 @@ function(__inner_require__, exports, module) {
 ### overWriteTlp(tpl, data)
 模板替换
 ### overWriteJoin(codes,jo = ',\n')
-合并
+数组合并
 ### overWriteReplace(target,regexp|substr, newSubstr|function)
 replace替换
 

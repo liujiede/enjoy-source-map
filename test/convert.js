@@ -67,14 +67,12 @@ function writeCodes(codes) {
 }
 
 function run() {
-    debugger;
-    sourcemap.overWriteReplace(getContent(path.resolve(__dirname, 'build', 'index.js')), "use strict", 'use');
-    /*setEnvByArgv('--fb'); //fromBuild
+    setEnvByArgv('--fb'); //fromBuild
     if (process.env.FB) {
         setEnvByArgv('--nw') //noWrite
         fromBuild();
     } else {
         fromSrc();
-    }*/
+    }
 }
 export { run };

@@ -64,10 +64,11 @@ function writeCodes(codes) {
     let mods = sourcemap.overWriteJoin(codes);
     let result = sourcemap.overWriteTlp(getContent(path.resolve(__dirname, 'tpl', 'single-mod.tpl')), { mods });
     fs.writeFile(path.resolve(__dirname, 'dist', 'index.js'), result, () => exec(`open ${path.resolve(__dirname, 'dist', 'index.html')}`));
-    console.log('all tests passed');
+    console.log('good ! all tests passed.');
 }
 
 function run() {
+    console.log('args:', process.argv.join());
     setEnvByArgv('--fb'); //fromBuild
     if (process.env.FB) {
         setEnvByArgv('--nw') //noWrite

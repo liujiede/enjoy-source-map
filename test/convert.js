@@ -3,6 +3,8 @@ import path from 'path'
 import trans from './babel-loader'
 import { exec } from 'child_process'
 import sourcemap from '../lib/enjoy-source-map.js'
+import assert from 'assert'
+import vlq from '../lib/vlq'
 
 function getContent(p) {
     return fs.readFileSync(p, 'utf8');
@@ -67,8 +69,27 @@ function writeCodes(codes) {
     console.log('good ! all tests passed.');
 }
 
+function testVlq() {
+    var tests = [
+        ['AAAAA', [0, 0, 0, 0, 0]],
+        ['EAAKX', [2, 0, 0, 5, -11]],
+        ['WAAoB', [11, 0, 0, 20]],
+        ['UAAYiP', [10, 0, 0, 12, 241]],
+        ['IAAS', [4, 0, 0, 9]],
+        ['MAK7DwB', [6, 0, 5, -61, 24]],
+        ['SAAWA', [9, 0, 0, 11, 0]]
+
+    ];
+
+    tests.forEach(test => assert.deepEqual(vlq.decode(test[0]), test[1]));
+    tests.forEach(test => assert.equal(vlq.encode(test[1]), test[0]));
+
+    console.log('all vlq tests passed');
+}
+
 function run() {
     console.log('args:', process.argv.join());
+    testVlq();
     setEnvByArgv('--fb'); //fromBuild
     if (process.env.FB) {
         setEnvByArgv('--nw') //noWrite

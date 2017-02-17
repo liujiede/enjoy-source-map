@@ -13,14 +13,14 @@ var content = fs.readFileSync(path.resolve(__dirname, "index.js"), {
 });
 
 //读取模板
-var innerModTpl = fs.readFileSync(path.resolve(__dirname, "inner-mod.tpl"), {
+var Tpl = fs.readFileSync(path.resolve(__dirname, "inner-mod.tpl"), {
     encoding: "utf8"
 });
 
 //babel转换源代码（需配置sourceMaps:'line'）
 var source =  babel.transform(content, {...}).code;
 
-content = combline.overWriteTlp(innerModTpl,{
+content = combline.overWriteTlp(Tpl,{
     content:source
 });
 
@@ -56,13 +56,26 @@ function(__inner_require__, exports, module) {
 ### overWriteTlp(tpl, data)
 
 模板替换
+```js
+var content = combline.overWriteTlp(Tpl,{
+    content:source
+});
+```
 
 ### overWriteJoin(codes,jo = ',\n')
 
 数组合并
+```js
+var codes = [code1,code2];
+var mods = sourcemap.overWriteJoin(codes);
+```
 
 ### overWriteReplace(target,regexp|substr, newSubstr|function)
 
 replace替换
-
+```js
+var content = sourcemap.overWriteReplace(codes,/(p1)(p2)/g,function(match, p1, p2){
+        return [p1, p2].join(' - ');
+    });
+```
 

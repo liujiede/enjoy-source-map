@@ -67,14 +67,14 @@ var content = combline.overWriteTlp(Tpl,{
 数组合并
 ```js
 var codes = [code1,code2];
-var mods = sourcemap.overWriteJoin(codes);
+var mods = combline.overWriteJoin(codes);
 ```
 
 ### overWriteReplace(target,regexp|substr, newSubstr|function)
 
 replace替换
 ```js
-var content = sourcemap.overWriteReplace(codes,/(p1)(p2)/g,function(match, p1, p2){
+var content = combline.overWriteReplace(codes,/(p1)(p2)/g,function(match, p1, p2){
         return [p1, p2].join(' - ');
     });
 ```

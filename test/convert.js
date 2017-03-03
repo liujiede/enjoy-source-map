@@ -35,7 +35,7 @@ function transFromDir(dir = 'src') {
 function fromSrc() {
     var codes = transFromDir().map(function(obj, i) {
         return sourcemap.overWriteTlp(getContent(path.resolve(__dirname, 'tpl', 'inner-mod.tpl')), {
-            content: obj.content.split("\n").join("\n" + Array(4).join('    '))
+            content: obj.content
         });
     });
     writeCodes(codes);
@@ -55,7 +55,7 @@ function fromBuild() {
     (process.env.NW ? new Promise((res, rej) => res()) : writeBuild()).then(function() {
         var codes = transFromDir('build').map(function(obj, i) {
             return sourcemap.overWriteTlp(getContent(path.resolve(__dirname, 'tpl', 'inner-mod.tpl')), {
-                content: obj.content.split("\n").join("\n" + Array(4).join('    '))
+                content: obj.content
             });
         });
         writeCodes(codes);

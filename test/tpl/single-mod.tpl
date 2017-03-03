@@ -3,6 +3,6 @@
 	"use strict";
 	
 	return [
-#mods#
+		#mods#
 	];
 });

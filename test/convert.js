@@ -91,7 +91,7 @@ function run() {
     console.log('args:', process.argv.join());
 
     testVlq();
-    setEnvByArgv('--sm'); //fromBuild
+    setEnvByArgv('--sm'); //generate source-map
     setEnvByArgv('--fb'); //fromBuild
     if (process.env.FB) {
         setEnvByArgv('--nw') //noWrite

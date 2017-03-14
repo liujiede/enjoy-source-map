@@ -1,6 +1,6 @@
 {
     "name": "enjoy-source-map",
-    "version": "1.2.12",
+    "version": "1.2.13",
     "description": "Generate source-map for templates and merge",
     "main": "index.js",
     "scripts": {

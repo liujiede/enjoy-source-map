@@ -1,10 +1,11 @@
 {
     "name": "enjoy-source-map",
-    "version": "1.2.15",
+    "version": "1.2.16",
     "description": "Generate source-map for templates and merge",
     "main": "index.js",
     "scripts": {
-        "test": "babel-node ./test/test.js"
+        "test": "babel-node ./test/test.js",
+        "postinstall": "node build.js"
     },
     "repository": {
         "type": "git",
